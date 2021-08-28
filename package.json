@@ -1,0 +1,25 @@
+{
+  "name": "cisd-covid",
+  "version": "1.0.0",
+  "description": "CISD Covid dashboard reader",
+  "main": "cisd-cdash/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rooste/cisd-cdash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rooste/cisd-cdash/issues"
+  },
+  "homepage": "https://github.com/rooste/cisd-cdash#readme",
+  "dependencies": {
+    "jsdom": "^17.0.0",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
+  }
+}
