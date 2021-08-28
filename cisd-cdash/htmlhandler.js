@@ -106,8 +106,8 @@ function updateDB(text, date, timestamp){
 
             let caseNumber = parseInt(gradeCases);
             if (!isNaN(caseNumber) ){
-                console.log(`is number ${grade} ${caseNumber} `)
-                db.commitUpdate(campus, grade, caseNumber, date, timestamp);
+//                console.log(`is number ${grade} ${caseNumber} `)
+                db.commitIfNew(campus, grade, caseNumber, date, timestamp);
             }
         }
         console.log(summary)

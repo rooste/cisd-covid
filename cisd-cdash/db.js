@@ -32,7 +32,26 @@ exports.db = {
         const sql = `INSERT INTO ${this.TABLE} (${this.CAMPUS}, ${this.GRADE}, ${this.CASES}, ${this.DATE}, ${this.TIMESTAMP}) VALUES (?, ?, ?, ?, ?)`
         const result = await this.database.run(sql, campus, grade, cases, date, timestamp);
 
-        console.log(`commitUpdate result ${JSON.stringify(result)} `);
+    },
+
+    commitIfNew: async function(campus, grade, cases, date, timestamp){
+        const sql = `SELECT ${this.CASES} FROM ${this.TABLE} WHERE ${this.CAMPUS}='${campus}' AND ${this.GRADE}='${grade}' AND ${this.DATE}='${date}'`
+        
+        var count = 0;
+        var results = []
+
+        await this.database.each(sql, (err, data) => {
+            if (err){
+                console.log(`checkDuplicate error ${err}`)
+            } else  {
+                count++
+                results.push(data[this.CASES])
+            }
+        })
+
+        if (!results.includes(cases)){
+            this.commitUpdate(campus, grade, cases, date, timestamp)
+        }
     }
 
   }
